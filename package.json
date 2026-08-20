@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "express": "^4.22.2"
+  },
+  "devDependencies": {
+    "jshint": "^2.13.6"
   }
 }
