@@ -1,14 +1,21 @@
-const http = require('node:http');
+const express = require("express");
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const app = express();
+const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Ola Mundo\n');
+app.get("/", (req, res) => {
+  res.send("Olá, mundo!");
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Servidor rodando em http://${hostname}:${port}/`);
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
+
+const prod = [
+  { id: 1, nome: "notebook", preco: 6700 },
+  { id: 2, nome: "mouse", preco: 120 }
+];
+
+app.get("/produtos", (req, res) => {
+  res.status(200).json(prod);
 });
